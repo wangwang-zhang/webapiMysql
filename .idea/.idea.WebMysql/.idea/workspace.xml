@@ -6,14 +6,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d530993e-1bab-4d6d-a64c-8ea7615487f7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebMysql/Models/Department.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebMysql/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebMysql/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Controllers/DepartmentController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7050e6fcd749473ca96c227ee2c38dd9174e00/37/44e066b6/MySqlPool.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7050e6fcd749473ca96c227ee2c38dd9174e00/ea/1cd65b54/MySqlConnection.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GcEunbEXN5HyXnDxSD68wBOeDI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -70,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666679696820</updated>
-      <workItem from="1666679711316" duration="578000" />
+      <workItem from="1666679711316" duration="10923000" />
     </task>
     <servers />
   </component>
