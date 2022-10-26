@@ -69,5 +69,37 @@ public class EmployeeController : Controller
         return new JsonResult("Added successfully");
     }
 
+    [HttpPut]
+    public JsonResult Put(Employee employee)
+    {
+        string query = @"
+           update Employee set 
+           EmployeeName = @EmployeeName,
+           Department = @Department,
+           DateOfjoining = @DateOfjoining,
+           PhotoFileName = @PhotoFileName
+           where EmployeeId = @EmployeeId;
+        ";
+        DataTable table = new DataTable();
+        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+        {
+            myCon.Open();
+            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
+            {
+                myCommand.Parameters.AddWithValue("@EmployeeId", employee.EmployeeId);
+                myCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
+                myCommand.Parameters.AddWithValue("@Department", employee.Department);
+                myCommand.Parameters.AddWithValue("@DateOfJoining", employee.DateOfJoining);
+                myCommand.Parameters.AddWithValue("@PhotoFileName", employee.PhotoFileName);
+                
+                var myReader = myCommand.ExecuteReader();
+                table.Load(myReader);
+                myReader.Close();
+                myCon.Close();
+            }
+        }
+        return new JsonResult("Updated successfully");
+    }
     
 }
