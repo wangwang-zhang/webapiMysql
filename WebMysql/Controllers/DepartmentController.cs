@@ -61,4 +61,30 @@ public class DepartmentController : Controller
         }
         return new JsonResult("Added successfully");
     }
+
+    [HttpPut]
+    public JsonResult Put(Department department)
+    {
+        string query = @"
+           update Department set 
+           DepartmentName = @DepartmentName
+           where DepartmentId = @DepartmentId;
+        ";
+        DataTable table = new DataTable();
+        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
+        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+        {
+            myCon.Open();
+            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
+            {
+                myCommand.Parameters.AddWithValue("@DepartmentId", department.DepartmentId);
+                myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
+                var myReader = myCommand.ExecuteReader();
+                table.Load(myReader);
+                myReader.Close();
+                myCon.Close();
+            }
+        }
+        return new JsonResult("Updated successfully");
+    }
 }
