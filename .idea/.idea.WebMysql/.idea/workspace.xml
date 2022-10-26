@@ -7,9 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d530993e-1bab-4d6d-a64c-8ea7615487f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +16,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Controllers/DepartmentController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/wangwang.zhang/DotnetStudy/WebMysql/WebMysql/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7050e6fcd749473ca96c227ee2c38dd9174e00/37/44e066b6/MySqlPool.cs" root0="SKIP_HIGHLIGHTING" />
@@ -81,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1666679696820</updated>
-      <workItem from="1666679711316" duration="10923000" />
+      <workItem from="1666679711316" duration="12410000" />
     </task>
     <servers />
   </component>
