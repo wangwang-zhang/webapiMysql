@@ -11,10 +11,12 @@ namespace WebMysql.Controllers;
 public class EmployeeController : Controller
 {
     private readonly IConfiguration _configuration;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public EmployeeController(IConfiguration configuration)
+    public EmployeeController(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
     {
         _configuration = configuration;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     [HttpGet]
@@ -123,5 +125,31 @@ public class EmployeeController : Controller
             }
         }
         return new JsonResult("Deleted successfully");
+    }
+    [Route("SaveFile")]
+    [HttpPost]
+    public JsonResult SaveFile()
+    {
+        try
+        {
+            var httpRequest = Request.Form;
+            int fileCount = httpRequest.Files.Count;
+            var fileNames = new string[fileCount];
+            for (int i = 0; i < fileCount; i++)
+            {
+                var postedFile = httpRequest.Files[i];
+                fileNames[i] = postedFile.FileName;
+                var physicalPath = _webHostEnvironment.ContentRootPath + "/Photos/" + fileNames[i];
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+            }
+            return new JsonResult(fileNames);
+        }
+        catch (Exception)
+        {
+            return new JsonResult("anonymous.png");
+        }
     }
 }
