@@ -9,11 +9,11 @@ namespace WebMysql.Controllers;
 [Route("[controller]")]
 public class DepartmentController : Controller
 {
-    private readonly IConfiguration _configuration;
+    private readonly MySqlConnection _connection;
 
-    public DepartmentController(IConfiguration configuration)
+    public DepartmentController(IConfiguration configuration, MySqlConnection connection)
     {
-        _configuration = configuration;
+        _connection = connection;
     }
 
     [HttpGet]
@@ -24,20 +24,18 @@ public class DepartmentController : Controller
           from Department
         ";
         DataTable table = new DataTable();
-        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+        _connection.Open();
+        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
         {
-            myCon.Open();
-            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
-            {
-                var myReader = myCommand.ExecuteReader();
-                table.Load(myReader);
-                myReader.Close();
-                myCon.Close();
-            }
+            var myReader = myCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
         }
+
         return new JsonResult(table);
     }
+
     [HttpPost]
     public JsonResult Post(Department department)
     {
@@ -46,19 +44,16 @@ public class DepartmentController : Controller
                         (@DepartmentName);
         ";
         DataTable table = new DataTable();
-        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+        _connection.Open();
+        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
         {
-            myCon.Open();
-            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
-            {
-                myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-                var myReader = myCommand.ExecuteReader();
-                table.Load(myReader);
-                myReader.Close();
-                myCon.Close();
-            }
+            myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
+            var myReader = myCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
         }
+
         return new JsonResult("Added successfully");
     }
 
@@ -71,22 +66,22 @@ public class DepartmentController : Controller
            where DepartmentId = @DepartmentId;
         ";
         DataTable table = new DataTable();
-        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+
+
+        _connection.Open();
+        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
         {
-            myCon.Open();
-            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
-            {
-                myCommand.Parameters.AddWithValue("@DepartmentId", department.DepartmentId);
-                myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-                var myReader = myCommand.ExecuteReader();
-                table.Load(myReader);
-                myReader.Close();
-                myCon.Close();
-            }
+            myCommand.Parameters.AddWithValue("@DepartmentId", department.DepartmentId);
+            myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
+            var myReader = myCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
         }
+
         return new JsonResult("Updated successfully");
     }
+
     [HttpDelete("{id}")]
     public JsonResult Delete(int id)
     {
@@ -95,18 +90,14 @@ public class DepartmentController : Controller
            where DepartmentId = @DepartmentId;
         ";
         DataTable table = new DataTable();
-        string sqlDataSource = _configuration.GetConnectionString("EmployeeAppCon");
-        using (MySqlConnection myCon = new MySqlConnection(sqlDataSource))
+        _connection.Open();
+        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
         {
-            myCon.Open();
-            using (MySqlCommand myCommand = new MySqlCommand(query, myCon))
-            {
-                myCommand.Parameters.AddWithValue("@DepartmentId", id);
-                var myReader = myCommand.ExecuteReader();
-                table.Load(myReader);
-                myReader.Close();
-                myCon.Close();
-            }
+            myCommand.Parameters.AddWithValue("@DepartmentId", id);
+            var myReader = myCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
         }
         return new JsonResult("Deleted successfully");
     }

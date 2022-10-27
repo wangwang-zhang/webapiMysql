@@ -7,7 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d530993e-1bab-4d6d-a64c-8ea7615487f7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebMysql/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebMysql/Controllers/EmployeeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Controllers/EmployeeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebMysql/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/WebMysql.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

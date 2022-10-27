@@ -1,8 +1,9 @@
+using System.Configuration;
 using Microsoft.Extensions.FileProviders;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -16,6 +17,8 @@ builder.Services.AddCors(c =>
 builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling
  = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+var connectionString = builder.Configuration["ConnectionStrings:EmployeeAppCon"];
+builder.Services.AddTransient<MySqlConnection>(_ => new MySqlConnection(connectionString));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
