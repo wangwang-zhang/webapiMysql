@@ -11,7 +11,7 @@ public class DepartmentController : Controller
 {
     private readonly MySqlConnection _connection;
 
-    public DepartmentController(IConfiguration configuration, MySqlConnection connection)
+    public DepartmentController(MySqlConnection connection)
     {
         _connection = connection;
     }

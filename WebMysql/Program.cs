@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.
  = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 var connectionString = builder.Configuration["ConnectionStrings:EmployeeAppCon"];
-builder.Services.AddTransient<MySqlConnection>(_ => new MySqlConnection(connectionString));
+builder.Services.AddTransient(_ => new MySqlConnection(connectionString));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
