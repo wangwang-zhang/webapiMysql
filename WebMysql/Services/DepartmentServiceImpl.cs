@@ -25,4 +25,18 @@ public class DepartmentServiceImpl : IDepartmentService
             return new JsonResult("Added successfully!");
         return new JsonResult("Added failed");
     }
+
+    public JsonResult UpdateDepartmentNameById(Department department)
+    {
+        if (_departmentDao.Put(department))
+            return new JsonResult("Updated successfully!");
+        return new JsonResult("Updated failed");
+    }
+
+    public JsonResult DeleteDepartmentById(int id)
+    {
+        if (_departmentDao.Delete(id))
+            return new JsonResult("Deleted successfully!");
+        return new JsonResult("Deleted failed");
+    }
 }

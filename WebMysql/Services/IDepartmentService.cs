@@ -7,4 +7,7 @@ public interface IDepartmentService
 {
     public JsonResult GetDepartments();
     public JsonResult InsertDepartmentName(Department department);
+    public JsonResult UpdateDepartmentNameById(Department department);
+    public JsonResult DeleteDepartmentById(int id);
+
 }

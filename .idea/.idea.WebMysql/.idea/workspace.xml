@@ -5,13 +5,7 @@
     <projectFile profileName="WebMysql">WebMysql/WebMysql.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d530993e-1bab-4d6d-a64c-8ea7615487f7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Controllers/DepartmentController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/Dao/DepartmentDaoImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Dao/DepartmentDaoImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/Dao/IDepartmentDao.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Dao/IDepartmentDao.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/Services/DepartmentServiceImpl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Services/DepartmentServiceImpl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebMysql/Services/IDepartmentService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebMysql/Services/IDepartmentService.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d530993e-1bab-4d6d-a64c-8ea7615487f7" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1666679696820</updated>
       <workItem from="1666679711316" duration="13078000" />
-      <workItem from="1667180913341" duration="5783000" />
+      <workItem from="1667180913341" duration="7501000" />
     </task>
     <servers />
   </component>
