@@ -23,6 +23,8 @@ var connectionString = builder.Configuration["ConnectionStrings:EmployeeAppCon"]
 builder.Services.AddTransient(_ => new MySqlConnection(connectionString));
 builder.Services.AddSingleton<IDepartmentDao, DepartmentDaoImpl>();
 builder.Services.AddSingleton<IDepartmentService, DepartmentServiceImpl>();
+builder.Services.AddSingleton<IEmployeeDao, EmployeeDaoImpl>();
+builder.Services.AddSingleton<IEmployeeService, EmployeeServiceImpl>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
