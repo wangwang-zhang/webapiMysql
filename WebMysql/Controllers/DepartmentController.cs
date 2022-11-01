@@ -8,9 +8,9 @@ namespace WebMysql.Controllers;
 [Route("[controller]")]
 public class DepartmentController : Controller
 {
-    private readonly IDepartmentService _departmentService;
+    private readonly DepartmentService _departmentService;
 
-    public DepartmentController(IDepartmentService departmentService)
+    public DepartmentController(DepartmentService departmentService)
     {
         _departmentService = departmentService;
     }

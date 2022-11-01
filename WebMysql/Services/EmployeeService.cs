@@ -4,11 +4,11 @@ using WebMysql.Models;
 
 namespace WebMysql.Services;
 
-public class EmployeeServiceImpl : IEmployeeService
+public class EmployeeService
 {
     private readonly IEmployeeDao _employeeDao;
 
-    public EmployeeServiceImpl(IEmployeeDao employeeDao)
+    public EmployeeService(IEmployeeDao employeeDao)
     {
         _employeeDao = employeeDao;
     }

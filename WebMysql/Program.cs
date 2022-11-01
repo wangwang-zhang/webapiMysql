@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
@@ -21,10 +22,12 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 var connectionString = builder.Configuration["ConnectionStrings:EmployeeAppCon"];
 builder.Services.AddTransient(_ => new MySqlConnection(connectionString));
-builder.Services.AddSingleton<IDepartmentDao, DepartmentDaoImpl>();
-builder.Services.AddSingleton<IDepartmentService, DepartmentServiceImpl>();
-builder.Services.AddSingleton<IEmployeeDao, EmployeeDaoImpl>();
-builder.Services.AddSingleton<IEmployeeService, EmployeeServiceImpl>();
+
+builder.Services.AddScoped<DepartmentService>();
+builder.Services.AddScoped<IDepartmentDao, DepartmentDaoImpl>();
+
+builder.Services.AddScoped<EmployeeService>();
+builder.Services.AddScoped<IEmployeeDao, EmployeeDaoImpl>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

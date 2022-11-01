@@ -5,13 +5,13 @@ using WebMysql.Models;
 
 namespace WebMysql.Services;
 
-public class DepartmentServiceImpl : IDepartmentService
+public class DepartmentService
 {
     private readonly IDepartmentDao _departmentDao;
 
-    public DepartmentServiceImpl(DepartmentDaoImpl departmentDaoImpl)
+    public DepartmentService(IDepartmentDao departmentDao)
     {
-        _departmentDao = departmentDaoImpl;
+        _departmentDao = departmentDao;
     }
 
     public JsonResult GetDepartments()
