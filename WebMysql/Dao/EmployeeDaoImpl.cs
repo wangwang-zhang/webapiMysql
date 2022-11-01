@@ -88,4 +88,23 @@ public class EmployeeDaoImpl : IEmployeeDao
         }
         return true;
     }
+
+    public bool Delete(int id)
+    {
+        var query = @"
+            delete from Employee
+           where EmployeeId = @EmployeeId
+        ";
+        DataTable table = new();
+        _connection.Open();
+        using (MySqlCommand mySqlCommand = new MySqlCommand(query, _connection))
+        {
+            mySqlCommand.Parameters.AddWithValue("@EmployeeId", id);
+            var myReader = mySqlCommand.ExecuteReader();
+            table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
+        }
+        return true;
+    }
 }

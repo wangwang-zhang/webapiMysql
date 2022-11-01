@@ -31,4 +31,11 @@ public class EmployeeServiceImpl : IEmployeeService
             return new JsonResult("Updated successfully!");
         return new JsonResult("updated failed!");
     }
+
+    public JsonResult DeleteEmployeeById(int id)
+    {
+        if (_employeeDao.Delete(id))
+            return new JsonResult("Deleted successfully!");
+        return new JsonResult("Deleted failed");
+    }
 }

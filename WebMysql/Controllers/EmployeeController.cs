@@ -43,23 +43,7 @@ public class EmployeeController : Controller
     [HttpDelete("{id}")]
     public JsonResult Delete(int id)
     {
-        string query = @"
-           delete from Employee 
-           where EmployeeId = @EmployeeId;
-        ";
-        DataTable table = new DataTable();
-
-        _connection.Open();
-        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
-        {
-            myCommand.Parameters.AddWithValue("@EmployeeId", id);
-            var myReader = myCommand.ExecuteReader();
-            table.Load(myReader);
-            myReader.Close();
-            _connection.Close();
-        }
-
-        return new JsonResult("Deleted successfully");
+        return _employeeService.DeleteEmployeeById(id);
     }
 
     [Route("SaveFile")]
