@@ -1,6 +1,7 @@
 using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
+using WebMysql.Models;
 
 namespace WebMysql.Dao;
 
@@ -29,5 +30,22 @@ public class DepartmentDaoImpl : IDepartmentDao
             _connection.Close();
         }
         return new JsonResult(_table);
+    }
+    public bool Post(Department department)
+    {
+        string query = @"
+          insert into Department(DepartmentName) values 
+                        (@DepartmentName);
+        ";
+        _connection.Open();
+        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
+        {
+            myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
+            var myReader = myCommand.ExecuteReader();
+            _table.Load(myReader);
+            myReader.Close();
+            _connection.Close();
+        }
+        return true;
     }
 }

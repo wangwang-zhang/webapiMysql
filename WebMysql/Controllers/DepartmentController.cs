@@ -29,22 +29,7 @@ public class DepartmentController : Controller
     [HttpPost]
     public JsonResult Post(Department department)
     {
-        string query = @"
-          insert into Department(DepartmentName) values 
-                        (@DepartmentName);
-        ";
-        DataTable table = new DataTable();
-        _connection.Open();
-        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
-        {
-            myCommand.Parameters.AddWithValue("@DepartmentName", department.DepartmentName);
-            var myReader = myCommand.ExecuteReader();
-            table.Load(myReader);
-            myReader.Close();
-            _connection.Close();
-        }
-
-        return new JsonResult("Added successfully");
+        return _departmentService.InsertDepartmentName(department);
     }
 
     [HttpPut]
