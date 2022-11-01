@@ -1,7 +1,4 @@
-using System.Data;
 using Microsoft.AspNetCore.Mvc;
-using MySql.Data.MySqlClient;
-using WebMysql.Dao;
 using WebMysql.Models;
 using WebMysql.Services;
 

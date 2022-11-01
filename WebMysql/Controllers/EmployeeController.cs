@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
-using MySql.Data.MySqlClient;
 using WebMysql.Models;
 using WebMysql.Services;
-
 
 namespace WebMysql.Controllers;
 
@@ -11,14 +8,12 @@ namespace WebMysql.Controllers;
 [Route("[controller]")]
 public class EmployeeController : Controller
 {
-    private readonly MySqlConnection _connection;
     private readonly IWebHostEnvironment _webHostEnvironment;
     private readonly IEmployeeService _employeeService;
 
-    public EmployeeController(IWebHostEnvironment webHostEnvironment, MySqlConnection connection, IEmployeeService employeeService)
+    public EmployeeController(IWebHostEnvironment webHostEnvironment, IEmployeeService employeeService)
     {
         _webHostEnvironment = webHostEnvironment;
-        _connection = connection;
         _employeeService = employeeService;
     }
 
@@ -27,7 +22,7 @@ public class EmployeeController : Controller
     {
         return _employeeService.GetEmployees();
     }
-    
+
     [HttpPost]
     public JsonResult Post(Employee employee)
     {
