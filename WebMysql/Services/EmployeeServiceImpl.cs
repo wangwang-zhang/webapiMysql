@@ -24,4 +24,11 @@ public class EmployeeServiceImpl : IEmployeeService
             return new JsonResult("Added successful!");
         return new JsonResult("Added failed!");
     }
+
+    public JsonResult UpdateEmployeeById(Employee employee)
+    {
+        if (_employeeDao.Put(employee))
+            return new JsonResult("Updated successfully!");
+        return new JsonResult("updated failed!");
+    }
 }

@@ -7,4 +7,5 @@ public interface IEmployeeService
 {
     public JsonResult GetEmployees();
     public JsonResult InsertEmployee(Employee employee);
+    public JsonResult UpdateEmployeeById(Employee employee);
 }

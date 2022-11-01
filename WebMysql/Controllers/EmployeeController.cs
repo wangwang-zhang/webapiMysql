@@ -37,32 +37,7 @@ public class EmployeeController : Controller
     [HttpPut]
     public JsonResult Put(Employee employee)
     {
-        string query = @"
-           update Employee set 
-           EmployeeName = @EmployeeName,
-           Department = @Department,
-           DateOfjoining = @DateOfjoining,
-           PhotoFileName = @PhotoFileName
-           where EmployeeId = @EmployeeId;
-        ";
-        DataTable table = new DataTable();
-
-        _connection.Open();
-        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
-        {
-            myCommand.Parameters.AddWithValue("@EmployeeId", employee.EmployeeId);
-            myCommand.Parameters.AddWithValue("@EmployeeName", employee.EmployeeName);
-            myCommand.Parameters.AddWithValue("@Department", employee.Department);
-            myCommand.Parameters.AddWithValue("@DateOfJoining", employee.DateOfJoining);
-            myCommand.Parameters.AddWithValue("@PhotoFileName", employee.PhotoFileName);
-
-            var myReader = myCommand.ExecuteReader();
-            table.Load(myReader);
-            myReader.Close();
-            _connection.Close();
-        }
-
-        return new JsonResult("Updated successfully");
+        return _employeeService.UpdateEmployeeById(employee);
     }
 
     [HttpDelete("{id}")]
