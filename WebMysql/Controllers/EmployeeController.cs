@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using MySql.Data.MySqlClient;
 using WebMysql.Models;
+using WebMysql.Services;
 
 
 namespace WebMysql.Controllers;
@@ -12,35 +13,21 @@ public class EmployeeController : Controller
 {
     private readonly MySqlConnection _connection;
     private readonly IWebHostEnvironment _webHostEnvironment;
+    private readonly IEmployeeService _employeeService;
 
-    public EmployeeController(IWebHostEnvironment webHostEnvironment, MySqlConnection connection)
+    public EmployeeController(IWebHostEnvironment webHostEnvironment, MySqlConnection connection, IEmployeeService employeeService)
     {
         _webHostEnvironment = webHostEnvironment;
         _connection = connection;
+        _employeeService = employeeService;
     }
 
     [HttpGet]
     public JsonResult Get()
     {
-        string query = @"
-          select EmployeeId, EmployeeName,Department,
-                 DATE_FORMAT(DateOfJoining, '%Y-%m-%d') as DateOfJoining,
-                 PhotoFileName
-          from Employee;
-        ";
-        DataTable table = new DataTable();
-        _connection.Open();
-        using (MySqlCommand myCommand = new MySqlCommand(query, _connection))
-        {
-            var myReader = myCommand.ExecuteReader();
-            table.Load(myReader);
-            myReader.Close();
-            _connection.Close();
-        }
-
-        return new JsonResult(table);
+        return _employeeService.GetEmployees();
     }
-
+    
     [HttpPost]
     public JsonResult Post(Employee employee)
     {
