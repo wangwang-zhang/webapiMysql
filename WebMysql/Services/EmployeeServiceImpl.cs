@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using WebMysql.Dao;
+using WebMysql.Models;
 
 namespace WebMysql.Services;
 
 public class EmployeeServiceImpl : IEmployeeService
 {
-    private IEmployeeDao _employeeDao;
+    private readonly IEmployeeDao _employeeDao;
 
     public EmployeeServiceImpl(IEmployeeDao employeeDao)
     {
@@ -15,5 +16,12 @@ public class EmployeeServiceImpl : IEmployeeService
     public JsonResult GetEmployees()
     {
         return _employeeDao.Get();
+    }
+
+    public JsonResult InsertEmployee(Employee employee)
+    {
+        if (_employeeDao.Post(employee))
+            return new JsonResult("Added successful!");
+        return new JsonResult("Added failed!");
     }
 }
