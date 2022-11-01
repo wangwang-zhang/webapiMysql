@@ -2,6 +2,8 @@ using System.Configuration;
 using Microsoft.Extensions.FileProviders;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Serialization;
+using WebMysql.Dao;
+using WebMysql.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -19,6 +21,8 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson(options => options.
     .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 var connectionString = builder.Configuration["ConnectionStrings:EmployeeAppCon"];
 builder.Services.AddTransient(_ => new MySqlConnection(connectionString));
+builder.Services.AddSingleton<IDepartmentDao, DepartmentDaoImpl>();
+builder.Services.AddSingleton<IDepartmentService, DepartmentServiceImpl>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
